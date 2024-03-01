@@ -41,7 +41,10 @@ class BottomNavBar extends StatelessWidget {
 
                 return Expanded(
                   child: GestureDetector(
-                    onTap: () => value.changeActiveNav(nav['name']),
+                    onTap: () {
+                      value.changeActiveNav(nav['name']);
+                      Navigator.pushNamed(context, '/${nav['name']}');
+                    },
                     child: Container(
                       padding: const EdgeInsets.all(15),
                       decoration: BoxDecoration(
