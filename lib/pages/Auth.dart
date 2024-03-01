@@ -13,8 +13,10 @@ class AuthPage extends StatelessWidget {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: Image.asset("assets/images/bg.png").image,
-            opacity: 0.7,
+            opacity: 0.4,
             fit: BoxFit.cover,
+            colorFilter: ColorFilter.mode(
+                Colors.black.withOpacity(0.5), BlendMode.dstATop),
           ),
         ),
         child: Center(
@@ -47,7 +49,7 @@ class AuthPage extends StatelessWidget {
               MyButton(
                 text: "Sign In",
                 onTap: () {},
-                bgColor: Colors.grey.shade800,
+                bgColor: Color.fromARGB(124, 97, 97, 97),
               ),
               const SizedBox(height: 25),
 
@@ -57,7 +59,7 @@ class AuthPage extends StatelessWidget {
                   Text(
                     "Don't have an account? ",
                     style: TextStyle(
-                      color: Colors.grey.shade700,
+                      color: Palette.secondary,
                     ),
                   ), // This was missing
                   GestureDetector(
