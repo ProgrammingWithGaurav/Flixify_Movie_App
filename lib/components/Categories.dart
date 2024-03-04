@@ -2,16 +2,7 @@ import 'package:flixify_movie_app/palette/palette.dart';
 import 'package:flixify_movie_app/providers/Home.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-List<String> categories = [
-  "All",
-  "Action",
-  "Comedy",
-  "Drama",
-  "Horror",
-  "Kids",
-  "Animation",
-];
+import 'package:flixify_movie_app/utils/utils.dart';
 
 class Categories extends StatelessWidget {
   Categories({super.key});
@@ -26,23 +17,25 @@ class Categories extends StatelessWidget {
                 child: Row(
                   children: List.generate(categories.length, (index) {
                     return GestureDetector(
-                      onTap: () =>
-                          value.changeActiveCategory(categories[index]),
+                      onTap: () => value
+                          .changeActiveCategory(categories[index]['title']!),
                       child: Container(
                         decoration: BoxDecoration(
-                          color: categories[index] == value.activeCategory
-                              ? Palette.blueAccent
-                              : Colors.transparent,
+                          color:
+                              categories[index]['title'] == value.activeCategory
+                                  ? Palette.blueAccent
+                                  : Colors.transparent,
                           borderRadius: BorderRadius.circular(20),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 8),
                           child: Text(
-                            categories[index],
+                            categories[index]['title'],
                             style: TextStyle(
                               fontSize: 18,
-                              color: categories[index] == value.activeCategory
+                              color: categories[index]['title'] ==
+                                      value.activeCategory
                                   ? Colors.white
                                   : Colors.grey.shade500,
                             ),
