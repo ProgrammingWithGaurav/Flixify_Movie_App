@@ -11,7 +11,7 @@ class Categories extends StatelessWidget {
     // scrollable list of categories
     return Consumer<HomeProvider>(
         builder: (context, value, child) => Container(
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(

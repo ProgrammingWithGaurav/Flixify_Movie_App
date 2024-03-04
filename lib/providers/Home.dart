@@ -5,7 +5,7 @@ import 'package:http/http.dart';
 import 'dart:convert';
 
 class HomeProvider extends ChangeNotifier {
-  String _activeCategory = "Trending";
+  String _activeCategory = "Top Rated";
   String _activeNav = "Home";
   List<Movie> _movies = [];
 
