@@ -6,11 +6,17 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../components/BottomNavBar.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   // get user
   final user = FirebaseAuth.instance.currentUser;
+
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(builder: (context, value, child) {

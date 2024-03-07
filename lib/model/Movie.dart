@@ -19,7 +19,6 @@ List<Map<String, dynamic>> obj = [
 ];
 
 class Movie {
-  final bool adult;
   final String backdropPath;
   final List<int> genreIds;
   final int id;
@@ -30,13 +29,11 @@ class Movie {
   final String posterPath;
   final String releaseDate;
   final String title;
-  final bool video;
   final double voteAverage;
   final int voteCount;
 
   Movie(
-      {required this.adult,
-      required this.backdropPath,
+      {required this.backdropPath,
       required this.genreIds,
       required this.id,
       required this.originalLanguage,
@@ -46,14 +43,12 @@ class Movie {
       required this.posterPath,
       required this.releaseDate,
       required this.title,
-      required this.video,
       required this.voteAverage,
       required this.voteCount});
 
   // factory method to create a Movie instance from a json object
   factory Movie.fromJson(Map<String, dynamic> json) {
     return Movie(
-      adult: json['adult'],
       backdropPath: json['backdrop_path'],
       genreIds: json['genre_ids'].cast<int>(),
       id: json['id'],
@@ -64,7 +59,6 @@ class Movie {
       posterPath: json['poster_path'],
       releaseDate: json['release_date'],
       title: json['title'],
-      video: json['video'],
       voteAverage: json['vote_average'],
       voteCount: json['vote_count'],
     );

@@ -70,43 +70,46 @@ class MovieDetails extends StatelessWidget {
                     ),
                     SizedBox(height: 10),
                     // rating
-                    Row(
-                      children: [
-                        Icon(Icons.star, color: Palette.blueAccent),
-                        SizedBox(width: 5),
-                        Text(
-                          movie!.voteAverage.toString(),
-                          style: TextStyle(
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: [
+                          Icon(Icons.star, color: Palette.blueAccent),
+                          SizedBox(width: 5),
+                          Text(
+                            movie!.voteAverage.toString(),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            movie!.voteCount.toString() + ' votes' + " | ",
+                            style: TextStyle(
                               color: Colors.white,
                               fontSize: 16,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          movie!.voteCount.toString() + ' votes' + " | ",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
+                            ),
                           ),
-                        ),
-                        SizedBox(width: 10),
-                        Text(
-                          movie!.releaseDate,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
+                          SizedBox(width: 10),
+                          Text(
+                            movie!.releaseDate,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
                           ),
-                        ),
-                        SizedBox(width: 25),
-                        // popularity
-                        Text(
-                          movie!.popularity.toString() + "%" + ' popularity',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
+                          SizedBox(width: 25),
+                          // popularity
+                          Text(
+                            movie!.popularity.toString() + "%" + ' popularity',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 16,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ],
                 ),

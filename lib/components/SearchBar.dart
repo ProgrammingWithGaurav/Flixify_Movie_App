@@ -1,47 +1,74 @@
-import 'package:flixify_movie_app/pages/Home.dart';
 import 'package:flixify_movie_app/palette/palette.dart';
+import 'package:flixify_movie_app/providers/Home.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class MySearchBar extends StatelessWidget {
+class MySearchBar extends StatefulWidget {
+  MySearchBar({super.key});
+
+  @override
+  State<MySearchBar> createState() => _MySearchBarState();
+}
+
+class _MySearchBarState extends State<MySearchBar> {
   // search controller
   final TextEditingController searchController = TextEditingController();
-  MySearchBar({super.key});
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    searchController.dispose();
+    super.dispose();
+  }
 
   void searchMovies(BuildContext context) {
     // call the fetch
-    // navigate to home page
+    if (searchController.text.isNotEmpty) {
+      // fetch movies
+      Provider.of<HomeProvider>(context, listen: false)
+          .changeSearch(searchController.text);
+      // call the search function
+      Provider.of<HomeProvider>(context, listen: false).findMovies();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        SearchBar(
-            padding: MaterialStateProperty.resolveWith<EdgeInsetsGeometry?>(
-              (states) =>
-                  const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-            ),
-            controller: searchController,
-            backgroundColor: MaterialStateProperty.resolveWith(
-                (states) => Colors.white.withOpacity(0.1)),
-            leading: Icon(Icons.search, color: Colors.grey.shade500, size: 32),
-            hintText: "Find Movies, TV Shows and more...",
-            hintStyle: MaterialStateProperty.resolveWith<TextStyle?>(
-                (states) => TextStyle(color: Colors.grey.shade500))),
-
-        // Search Button
-        TextButton(
-            style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.resolveWith(
-                    (states) => Palette.blueAccent),
+    return Consumer<HomeProvider>(builder: (context, value, child) {
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width * 0.7,
+            child: SearchBar(
                 padding: MaterialStateProperty.resolveWith<EdgeInsetsGeometry?>(
-                    (states) => const EdgeInsets.symmetric(
-                        horizontal: 25, vertical: 15))),
-            onPressed: () => searchMovies(context),
-            child: Text("Search",
-                style: TextStyle(color: Colors.white, fontSize: 20)))
-      ],
-    );
+                  (states) =>
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                ),
+                controller: searchController,
+                textStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+                    (states) => TextStyle(color: Colors.white)),
+                backgroundColor: MaterialStateProperty.resolveWith(
+                    (states) => Colors.white.withOpacity(0.1)),
+                leading:
+                    Icon(Icons.search, color: Colors.grey.shade500, size: 32),
+                hintText: "Find Movies, TV Shows and more...",
+                hintStyle: MaterialStateProperty.resolveWith<TextStyle?>(
+                    (states) => TextStyle(color: Colors.grey.shade500))),
+          ),
+
+          // Search Button
+          GestureDetector(
+            onTap: () => searchMovies(context),
+            child: Container(
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                  color: Palette.blueAccent,
+                  borderRadius: BorderRadius.circular(50)),
+              child: Icon(Icons.search, color: Colors.white, size: 32),
+            ),
+          )
+        ],
+      );
+    });
   }
 }
