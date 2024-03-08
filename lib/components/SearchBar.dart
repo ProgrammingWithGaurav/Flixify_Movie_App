@@ -20,17 +20,6 @@ class _MySearchBarState extends State<MySearchBar> {
     super.dispose();
   }
 
-  void searchMovies(BuildContext context) {
-    // call the fetch
-    if (searchController.text.isNotEmpty) {
-      // fetch movies
-      Provider.of<HomeProvider>(context, listen: false)
-          .changeSearch(searchController.text);
-      // call the search function
-      Provider.of<HomeProvider>(context, listen: false).findMovies();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(builder: (context, value, child) {
@@ -58,7 +47,17 @@ class _MySearchBarState extends State<MySearchBar> {
 
           // Search Button
           GestureDetector(
-            onTap: () => searchMovies(context),
+            onTap: () {
+              // call the fetch
+              if (searchController.text.isNotEmpty) {
+                // fetch movies
+                value.changeSearch(searchController.text);
+                // call the search function
+                value.findMovies(searchController.text);
+                // clear the search
+                searchController.clear();
+              }
+            },
             child: Container(
               padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(

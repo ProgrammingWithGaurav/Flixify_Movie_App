@@ -55,13 +55,13 @@ class HomeProvider extends ChangeNotifier {
 
   // search
 
-  Future findMovies() async {
-    if (_search == "") return;
-    final url = "https://movie-tmdb-api.onrender.com/search/$_search";
-    final response = await get(Uri.parse(url));
-
-    // if loading
+  Future findMovies(String movie) async {
+    if (movie == "") return;
     try {
+      final url = "https://movie-tmdb-api.onrender.com/search/$movie";
+      final response = await get(Uri.parse(url));
+
+      // if loading
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body);
         List<Movie> moviesSearch = [];

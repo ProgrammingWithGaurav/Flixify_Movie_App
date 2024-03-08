@@ -15,7 +15,7 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeProvider>(builder: (context, value, child) {
-      value.findMovies();
+      value.findMovies(value.search);
       return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
