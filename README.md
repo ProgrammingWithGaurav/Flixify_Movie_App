@@ -1,16 +1,34 @@
-# flixify_movie_app
+# 🎬 Movie App
 
-A new Flutter project.
+![App Screenshot](./assets/screenshots/Home.png)
 
-## Getting Started
+## 🌟 Features
 
-This project is a starting point for a Flutter application.
+- Browse popular movies
+- Search for movies
+- Add movies to watchlist
+- View detailed information about a movie
+- Category wise movie listing
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠️ Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Flutter
+- Firebase
+- TMDB API
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📸 Screenshots
+
+| Home Screen | Search Screen | Movie Details |
+|-------------|---------------|---------------|
+| ![Home Screen](./assets/screenshots/Home.png) | ![Search Screen](./assets/screenshots/Search.png) | ![Movie Details](./assets/screenshots/Details.png) |
+
+| Watchlist | Profile | Splash |
+|-------------|---------------|---------------|
+| ![Watchlist](./assets/screenshots/Watchlist.png) | ![Profile](./assets/screenshots/Profile.png) | ![Splash](./assets/screenshots/Splash.png) |
+
+
+## 🚀 Getting Started
+
+1. Clone the repo
+    ```sh 
+    git clone https://github.com/ProgrammingWithGaurav/Flixify_Movie_App
