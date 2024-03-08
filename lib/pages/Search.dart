@@ -19,14 +19,14 @@ class _SearchPageState extends State<SearchPage> {
       return Scaffold(
         backgroundColor: Colors.black,
         appBar: AppBar(
-            backgroundColor: Colors.black,
-            title: Text(
-              "Search",
-              style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
-            )),
+          backgroundColor: Colors.black,
+          title: Text(
+            "Search",
+            style: TextStyle(
+                fontSize: 28, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          iconTheme: IconThemeData(color: Colors.white),
+        ),
         body: Container(
           padding: const EdgeInsets.all(10),
           child: Column(children: [

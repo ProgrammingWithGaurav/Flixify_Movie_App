@@ -43,4 +43,21 @@ class Movie {
       voteCount: json['vote_count'],
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'backdrop_path': this.backdropPath,
+      'genre_ids': this.genreIds,
+      'id': this.id,
+      'original_language': this.originalLanguage,
+      'original_title': this.originalTitle,
+      'overview': this.overview,
+      'popularity': this.popularity,
+      'poster_path': this.posterPath,
+      'release_date': this.releaseDate,
+      'title': this.title,
+      'vote_average': this.voteAverage,
+      'vote_count': this.voteCount,
+    };
+  }
 }
