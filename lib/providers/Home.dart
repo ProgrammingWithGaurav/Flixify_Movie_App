@@ -92,7 +92,7 @@ class HomeProvider extends ChangeNotifier {
   Future<void> addToWatchlist(Movie movie) async {
     try {
       // remove from the ui
-      _watchlist.remove(movie);
+      _watchlist.add(movie);
       // find the current user watchlist
       final watchlist = await watchlistRef.doc(user!.uid).get();
       // if watchlist exists
@@ -123,4 +123,25 @@ class HomeProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+  // check if a movie is in current user watchlist
+  bool isInWatchlist(Movie movie) {
+    return _watchlist.any((element) => element.id == movie.id);
+  }
+
+  // remove from watchlist
+  Future<void> removeFromWatchlist(Movie movie) async {
+    try {
+      _watchlist.remove(movie);
+      await watchlistRef
+          .doc(user!.uid)
+          .collection("watchlist")
+          .doc(movie.id.toString())
+          .delete();
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  notifyListeners();
 }

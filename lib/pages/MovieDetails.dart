@@ -51,9 +51,17 @@ class MovieDetails extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topRight,
                         child: IconButton(
-                          icon: Icon(Icons.add, color: Colors.white),
+                          icon: Icon(
+                              value.isInWatchlist(movie!)
+                                  ? Icons.remove
+                                  : Icons.add,
+                              color: Colors.white),
                           onPressed: () {
-                            value.addToWatchlist(movie!);
+                            if (value.isInWatchlist(movie!)) {
+                              value.removeFromWatchlist(movie!);
+                            } else {
+                              value.addToWatchlist(movie!);
+                            }
                           },
                         ),
                       ),
